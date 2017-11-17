@@ -1,0 +1,15 @@
+﻿@using Blog.Models;
+@model LoginViewModel
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(l => l.Login)
+    @Html.TextBoxFor(l => l.Login, new { @class = "form-control" })
+
+
+    @Html.LabelFor(l => l.Senha)
+    @Html.PasswordFor(l => l.Senha, new { @class = "form-control" })
+
+    <button type="submit" class="btn btn-success">Login</button>
+
+}

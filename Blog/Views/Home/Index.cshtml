@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@model IList<Blog.Models.Post>
+
+@*<button onclick="location.href='/Home/NovoPost'">ADICIONAR</button>
+<button onclick="location.href='/Home/Dummy'">DUMMY</button>
+<button onclick="location.href='/Home/Categoria/Filmes'">BUSCA FILME</button>
+
+<input name="categoria" />*@
+
+@foreach(Blog.Models.Post p in Model)
+{
+    <article>
+        <h1>@p.Titulo</h1>
+        <p>@p.Resumo</p>
+    </article>
+}
+
+
+@section Scripts {
+    @Html.Partial("_ScriptsIndex")
+}

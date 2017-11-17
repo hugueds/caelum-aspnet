@@ -1,0 +1,38 @@
+﻿
+<script src="~/Scripts/jquery-3.2.1.min.js"></script>
+
+<script>
+
+    document.onload += init();
+
+    function init() {
+        var addEvent = function () {
+            this.document.addEventListener("keyup", function (e) {
+                if (e.code == "F8" || e.code == "F2") {
+                    window.location = "/Home/Dummy";
+                }
+                console.log(e)
+            });
+        }(this);
+    }
+
+    $('.postDelete').on('click', function (e) {
+        e.preventDefault();
+        var self = $(this);
+        link = '/Home/DeletaPost/' + self.attr('id');
+        console.log('link: ' + link);
+        $.ajax({
+            url: link,
+            method: 'GET',
+            success: function (data) {
+                console.log('Post id ' + self.attr('id') + ' deletado');
+                self.closest('.post').remove();
+            },
+            error: function (err) {
+                console.error(err);
+            }
+
+        });
+    });
+
+</script>
