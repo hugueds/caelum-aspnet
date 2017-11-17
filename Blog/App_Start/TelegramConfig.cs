@@ -34,8 +34,7 @@ namespace Blog.App_Start
 
             if (e.Message.Text == "/publish")
             {
-                PostController p = new PostController();
-
+                PostController p = new PostController(new Infra.PostDAO(new Models.BlogContext()));
             }
 
 

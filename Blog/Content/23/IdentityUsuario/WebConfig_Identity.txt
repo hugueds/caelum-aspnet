@@ -1,0 +1,4 @@
+﻿<appSettings>
+    <!-- <add/> anteriores! Não os apague, apenas adicione o código abaixo -->
+    <add key="owin:AppStartup" value="Blog.App_Start.IdentityConfig" />
+</appSettings>

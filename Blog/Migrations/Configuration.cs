@@ -1,5 +1,7 @@
 namespace Blog.Migrations
 {
+    using Blog.Models;
+    using Microsoft.AspNet.Identity;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -18,6 +20,22 @@ namespace Blog.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+
+            var passwordHash = new PasswordHasher();
+            string password = passwordHash.HashPassword("admin");
+            Usuario usuarioAdmin = new Usuario()
+            {
+                UserName = "admin",
+                PasswordHash = password,
+                UltimoLogin = DateTime.Now,
+                SecurityStamp = Guid.NewGuid().ToString()
+            };
+            context.Users.AddOrUpdate(u => u.UserName, usuarioAdmin);
         }
     }
+
+    //protected override void Seed(BlogContext context)
+    //{
+    
+    //}
 }

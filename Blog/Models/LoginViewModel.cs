@@ -10,7 +10,7 @@ namespace Blog.Models
     {
         [Required]
         [Display(Name = "Usuario")]
-        public string Login { get; set; }
+        public string LoginName { get; set; }
 
         [Required]
         [Display(Name = "Senha")]

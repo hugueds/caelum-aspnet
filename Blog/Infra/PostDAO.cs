@@ -86,6 +86,21 @@ namespace Blog.Infra
                 .Select(p => p)
                 .ToList();
         }
+
+        public Post PublicarUltimo()
+        {
+            IList<Post> posts = _ctx.Post.ToList();
+            foreach( Post p in posts)
+            {
+                if (!p.Publicado)
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
+
+
     }
 
 }

@@ -10,14 +10,11 @@ using System.Web.Mvc;
 
 namespace Blog.Areas.Admin.Controllers
 {
+    [Authorize]
     public class PostController : Controller
     {
 
         private PostDAO _postDAO;
-
-        public PostController()
-        {
-        }
 
         public PostController(PostDAO dao)
         {
@@ -26,7 +23,6 @@ namespace Blog.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            //return View();
             return View(_postDAO.Lista());
         }
 
@@ -95,6 +91,12 @@ namespace Blog.Areas.Admin.Controllers
             Post p = new Post { Categoria = "Dummy", Resumo = "Dummmy", Titulo = "Dumie" };
             _postDAO.Adiciona(p);
             return RedirectToAction("Index");
+        }
+
+        public void PublicaUltimo()
+        {
+            Post p = _postDAO.PublicarUltimo();
+            _postDAO.Publica(p.Id);
         }
 
 
